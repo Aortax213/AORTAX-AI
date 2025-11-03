@@ -1,96 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AORTAX VISION — Abo Wateen Studio</title>
 
-  <!-- PWA manifest -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#001428">
-  <!-- أيقونة متصفح -->
-  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#001428" />
 
   <style>
+    /* Minimal reset */
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      font-family: "Poppins", system-ui, sans-serif;
-      background: radial-gradient(circle at top, #0b0b1a, #000);
+      font-family: "Tajawal", "Poppins", system-ui, sans-serif;
+      background: linear-gradient(180deg,#05060a 0%, #071025 60%, #02040a 100%);
       color:#e6eef8;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      direction:rtl;
       line-height:1.5;
-      padding-bottom:3rem;
+      padding-bottom:80px;
     }
 
     header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      padding:1rem 1.25rem;
-      background:rgba(255,255,255,0.03);
-      border-bottom:1px solid rgba(255,255,255,0.04);
-      position:sticky;
-      top:0;
-      z-index:999;
-      backdrop-filter:blur(8px);
+      position:sticky;top:0;z-index:40;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      display:flex;align-items:center;justify-content:space-between;padding:18px 20px;
     }
-    .brand{display:flex;align-items:center;gap:.75rem}
-    .logo-circle{
-      width:44px;height:44px;border-radius:10px;
-      background:linear-gradient(135deg,#007AFF,#6C5CE7);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:800;color:#fff;font-size:18px;box-shadow:0 6px 18px rgba(0,122,255,0.14);
-    }
-    .title{font-weight:700;color:#cfe7ff}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo-wrap{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0067ff,#00d0ff);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,122,255,0.12)}
+    .logo-wrap svg{width:26px;height:26px;fill:white}
+    .brand h1{font-size:16px;color:#fff;margin:0;letter-spacing:1px}
+    .brand p{font-size:12px;color:#cfe8ff;margin:0;opacity:.8}
 
-    nav a{color:#a8c6ff;text-decoration:none;margin-left:12px;font-weight:600;}
-    nav a:hover{color:#fff}
+    nav a{color:#bcd9ff;text-decoration:none;margin-left:12px;font-size:14px}
+    nav a:hover{color:white}
 
-    main{max-width:920px;margin:1.25rem auto;padding:0 1rem;}
+    main{max-width:980px;margin:22px auto;padding:0 16px}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;padding:1.25rem;margin-bottom:1rem;
-      box-shadow:0 6px 22px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;padding:20px;margin-bottom:18px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
     }
 
-    h1{font-size:1.35rem;margin-bottom:.5rem;color:#fff}
-    p.lead{color:#bcd7ff;margin-bottom:1rem}
-
-    .controls{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:.6rem}
-    .prompt{
-      width:100%;max-width:720px;padding:.8rem 1rem;border-radius:10px;border:none;
-      background:rgba(255,255,255,0.04);color:#eaf4ff;font-size:1rem;text-align:right;
-      outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
+    .hero h2{font-size:20px;margin-bottom:8px;color:#fff}
+    .hero p{color:#b7d7ff;margin-bottom:14px}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+    input[type="text"], textarea{
+      width:100%;max-width:720px;padding:14px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);
+      color:#e6eef8;font-size:15px;outline:none;
     }
     .btn{
-      background:#007AFF;border:none;color:#fff;padding:.7rem 1.05rem;border-radius:10px;font-weight:700;cursor:pointer;
-      box-shadow:0 8px 24px rgba(0,122,255,0.14);transition:transform .12s;
+      display:inline-block;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:700;
+      background:linear-gradient(90deg,#007AFF,#00D0FF);color:#fff;box-shadow:0 8px 30px rgba(0,122,255,0.14);
+      transition:transform .12s ease, box-shadow .12s ease;
     }
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfe7ff}
     .btn:active{transform:translateY(1px)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfe8ff;box-shadow:none}
 
-    .generated{
-      display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:1rem;
-    }
-    .generated img{max-width:100%;width:360px;border-radius:12px;box-shadow:0 12px 40px rgba(0,122,255,0.14)}
-    .small{font-size:.85rem;color:#b8d4ff}
+    .row{display:flex;gap:14px;align-items:center;justify-content:center;margin-top:12px}
+    .small{font-size:13px;color:#b8d8ff;opacity:.9}
 
-    .grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:1rem;
-    }
-    .thumb{border-radius:10px;overflow:hidden;background:#0b0b13;border:1px solid rgba(255,255,255,0.03)}
-    .thumb img{width:100%;height:140px;object-fit:cover;display:block}
+    /* gallery */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:18px}
+    .grid .tile{border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.12);min-height:120px;display:flex;align-items:center;justify-content:center}
+    .grid img{width:100%;height:100%;object-fit:cover;display:block}
 
-    footer{text-align:center;color:#8fb4ff;padding:1rem 0;margin-top:1.5rem;font-size:.9rem}
+    /* generated */
+    .generated{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .generated .image{border-radius:12px;overflow:hidden;background:#081022;padding:8px;border:1px solid rgba(255,255,255,0.03)}
+    .generated img{max-width:320px;width:100%;display:block;border-radius:8px;box-shadow:0 10px 30px rgba(0,122,255,0.12)}
+
+    /* footer */
+    footer{padding:18px;text-align:center;color:#9fbff0;opacity:.9;margin-top:30px}
 
     /* responsive */
-    @media (max-width:600px){
-      .generated img{width:90%}
-      nav{display:none}
+    @media (max-width:520px){
+      .brand h1{font-size:14px}
+      .logo-wrap{width:40px;height:40px}
+      .btn{padding:10px 14px}
     }
   </style>
 </head>
@@ -98,145 +89,170 @@
 
   <header>
     <div class="brand">
-      <div class="logo-circle">A</div>
+      <div class="logo-wrap" title="AORTAX">
+        <!-- Inline SVG logo (editable) -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" opacity="0.08"/><path d="M7 7h10v10H7z"/></svg>
+      </div>
       <div>
-        <div class="title">AORTAX VISION</div>
-        <div class="small">Abo Wateen Studio — تجربة صور ذكاء اصطناعي</div>
+        <h1>AORTAX VISION</h1>
+        <p>Abo Wateen Studio — تجربة صور ذكاء اصطناعي</p>
       </div>
     </div>
 
     <nav>
       <a href="#studio">الاستوديو</a>
       <a href="#gallery">المعرض</a>
-      <a href="#inspire">إلهام</a>
-      <a href="#profile">الملف</a>
+      <a href="#profile">حسابي</a>
     </nav>
   </header>
 
   <main>
-    <section class="card" id="studio" aria-labelledby="studioTitle">
-      <h1 id="studioTitle">AI Studio — استوديو الذكاء الاصطناعي</h1>
-      <p class="lead">اكتب وصف الصورة بالعربية أو الإنجليزية — اضغط "توليد" وستظهر نتيجتك فورًا. مدعوم بـ Pollinations (بدون API Key).</p>
+    <!-- hero / studio -->
+    <section class="card hero" id="studio">
+      <h2>استوديو الذكاء الاصطناعي — أنشئ صورة فنية الان</h2>
+      <p>اكتب وصف الصورة بالعربية أو الإنجليزية، ثم اضغط "توليد الصورة". مدعوم بـ Pollinations (بدون API Key).</p>
 
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <input id="prompt" class="prompt" placeholder="مثال: مدينة مستقبلية تحت أمطار نيّونية — تفصيل: ضوء أزرق، نمط فوتوغرافي" />
-        <div class="controls" style="margin-top:12px">
-          <button class="btn" id="generateBtn">توليد الصورة</button>
-          <button class="btn secondary" id="saveBtn" title="حفظ الصورة">حفظ</button>
-          <button class="btn secondary" id="downloadBtn" title="تحميل الصورة">تحميل</button>
-        </div>
+      <div style="margin-top:12px">
+        <textarea id="prompt" rows="2" placeholder="مثال: مدينة مستقبلية تحت أمطار نيونية - تفصيل: ضوء أزرق، عدسة 35mm، واقعي"></textarea>
+      </div>
 
-        <div class="generated" id="generatedArea" aria-live="polite" style="min-height:120px">
-          <!-- الصورة تظهر هنا -->
-        </div>
+      <div class="row">
+        <button class="btn" id="generateBtn">توليد الصورة</button>
+        <button class="btn ghost" id="saveBtn">حفظ</button>
+        <button class="btn ghost" id="downloadBtn">تحميل</button>
 
-        <div style="margin-top:12px;width:100%;max-width:720px;text-align:center;color:#9fc2ff;font-size:.9rem">
-          <span>نصيحة: أضف وصفًا تفصيليًا لتحصل على نتيجة احترافية أكثر (مادة، إضاءة، زاوية، أسلوب فني).</span>
-        </div>
+        <label class="small" style="margin-right:8px">
+          <input type="checkbox" id="soundToggle" checked> أصوات تفاعل
+        </label>
+      </div>
+
+      <div class="small" style="margin-top:12px">نصيحة: أضف وصفًا تفصيليًا (الخامة، الإضاءة، الزاوية، أسلوب فني)</div>
+
+      <div class="generated" id="outputArea"></div>
+    </section>
+
+    <!-- gallery -->
+    <section class="card" id="gallery">
+      <h2>معرض مختار</h2>
+      <p class="small">أمثلة سريعة من Pollinations (عرض فقط)</p>
+
+      <div class="grid" id="sampleGrid">
+        <div class="tile"><img src="https://image.pollinations.ai/prompt/neon%20portrait" alt=""></div>
+        <div class="tile"><img src="https://image.pollinations.ai/prompt/cyberpunk%20city" alt=""></div>
+        <div class="tile"><img src="https://image.pollinations.ai/prompt/magic%20realism%20portrait" alt=""></div>
+        <div class="tile"><img src="https://image.pollinations.ai/prompt/minimalist%20sunrise%20mountain" alt=""></div>
       </div>
     </section>
 
-    <section class="card" id="gallery" aria-labelledby="galleryTitle">
-      <h1 id="galleryTitle">معرض مختار</h1>
-      <p class="small">أمثلة سريعة من روابط Pollinations (عرض فقط).</p>
-
-      <div class="grid">
-        <div class="thumb"><img src="https://image.pollinations.ai/prompt/neon%20city%20at%20night" alt=""></div>
-        <div class="thumb"><img src="https://image.pollinations.ai/prompt/futuristic%20portrait%20cyberpunk" alt=""></div>
-        <div class="thumb"><img src="https://image.pollinations.ai/prompt/ultra%20realistic%20landscape" alt=""></div>
-        <div class="thumb"><img src="https://image.pollinations.ai/prompt/minimalist%20space%20scene" alt=""></div>
+    <!-- profile -->
+    <section class="card" id="profile">
+      <h2>حسابي / الإعدادات</h2>
+      <p class="small">ميزة تسجيل الدخول قادمة — حالياً يمكن حفظ الصورة محليًا وتنزيلها.</p>
+      <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <button class="btn ghost" id="toggleTheme">وضع نهاري / ليلي</button>
+        <a class="btn" href="https://instagram.com/okba_bzg" target="_blank" rel="noopener">تواصل – Instagram</a>
       </div>
     </section>
 
-    <section class="card" id="inspire" aria-labelledby="inspireTitle">
-      <h1 id="inspireTitle">إلهام</h1>
-      <p class="small">صور مميزة يوميًا — جرّب أوصاف قصيرة وطويلة لتجارب مختلفة.</p>
-    </section>
-
-    <section class="card" id="profile" aria-labelledby="profileTitle">
-      <h1 id="profileTitle">الملف</h1>
-      <p class="small">ميزة التسجيل وحفظ الأعمال قيد التطوير — يمكن إضافة Google Sign-in لاحقًا.</p>
-    </section>
+    <footer>
+      © 2025 Abo Wateen Studio · AORTAX VISION — صمم بـ ❤️ وذكاء
+    </footer>
   </main>
 
-  <footer>© AORTAX VISION — Abo Wateen Studio · تواصل: <a href="https://instagram.com/okba_bzg" target="_blank" style="color:#9fd1ff">okba_bzg</a></footer>
+  <!-- صوت تفاعل: ارفع ملف click.mp3 في نفس المجلد أو حدث المسار -->
+  <audio id="clickAudio" src="./click.mp3" preload="auto"></audio>
 
-  <!-- Service worker registration -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-        .then(reg => console.log('Service Worker مسجل:', reg.scope))
-        .catch(err => console.warn('فشل تسجيل Service Worker:', err));
-      });
-    }
-  </script>
+    // Helper
+    const el = id => document.getElementById(id);
+    const playClick = () => {
+      const cb = el('soundToggle').checked;
+      if(!cb) return;
+      const a = el('clickAudio');
+      if(!a) return;
+      a.currentTime = 0; a.play().catch(()=>{});
+    };
 
-  <!-- Pollinations generator script (simple) -->
-  <script>
-    const genBtn = document.getElementById('generateBtn');
-    const out = document.getElementById('generatedArea');
-    const promptInput = document.getElementById('prompt');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const saveBtn = document.getElementById('saveBtn');
-
-    function showMessage(text, color='#ffd9d9'){
-      out.innerHTML = `<div style="color:${color};padding:12px;border-radius:8px">${text}</div>`;
+    // Generate image (Pollinations)
+    function generateFromPrompt(text){
+      const encoded = encodeURIComponent(text);
+      // Pollinations simple endpoint
+      return `https://image.pollinations.ai/prompt/${encoded}`;
     }
 
-    genBtn.addEventListener('click', () => {
-      const prompt = promptInput.value.trim();
-      if(!prompt) return showMessage('رجاءً اكتب وصفًا للصورة أولاً.', '#ffcccb');
-      showMessage('جارٍ التوليد... انتظر ثوانٍ قليلة ✨', '#d6f8e8');
-
-      const url = 'https://image.pollinations.ai/prompt/' + encodeURIComponent(prompt);
-      // نعرض الصورة (Pollinations يعيد صورة عبر رابط مباشر)
-      const img = new Image();
+    // Actions
+    el('generateBtn').addEventListener('click', ()=>{
+      const prompt = el('prompt').value.trim();
+      if(!prompt){ alert('اكتب وصفًا أولاً'); return; }
+      playClick();
+      const url = generateFromPrompt(prompt);
+      const outputArea = el('outputArea');
+      outputArea.innerHTML = '';
+      // create image card
+      const card = document.createElement('div');
+      card.className = 'image';
+      const img = document.createElement('img');
       img.src = url;
       img.alt = prompt;
-      img.onload = () => {
-        out.innerHTML = '';
-        img.style.borderRadius = '12px';
-        img.style.maxWidth = '100%';
-        img.style.boxShadow = '0 12px 40px rgba(0,122,255,0.14)';
-        out.appendChild(img);
-
-        // نجعل أزرار التنزيل تعمل
-        downloadBtn.onclick = () => {
-          const a = document.createElement('a');
-          a.href = img.src;
-          a.download = 'AORTAX-image.png';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        };
-
-        // حفظ محلي داخل الـ IndexedDB / LocalStorage (بسيط)
-        saveBtn.onclick = async () => {
-          try {
-            const res = await fetch(img.src);
-            const blob = await res.blob();
-            const reader = new FileReader();
-            reader.onload = () => {
-              // نخزن كـ base64 في localStorage (مناسب لتجارب صغيرة)
-              const key = 'aortax_saved_' + Date.now();
-              localStorage.setItem(key, reader.result);
-              alert('تم الحفظ محليًا في المتصفح (localStorage).');
-            };
-            reader.readAsDataURL(blob);
-          } catch(e){ alert('فشل في حفظ الصورة: ' + e); }
-        };
-      };
-
-      img.onerror = () => {
-        showMessage('حدث خطأ أثناء تحميل الصورة. جرّب وصفًا آخر أو انتظر قليلاً.', '#ffd6d6');
-      };
+      img.onload = ()=>{ playClick(); }; // click when loaded
+      card.appendChild(img);
+      outputArea.prepend(card);
     });
 
-    // تفعيل زر Enter
-    promptInput.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter') genBtn.click();
+    // Save (localStorage as demo)
+    el('saveBtn').addEventListener('click', ()=>{
+      playClick();
+      try {
+        const imgs = Array.from(document.querySelectorAll('#outputArea img')).map(i=>i.src);
+        localStorage.setItem('aortax_saved', JSON.stringify(imgs));
+        alert('تم الحفظ محليًا في المتصفح');
+      } catch(e){ alert('خطأ في الحفظ'); }
     });
+
+    // Download top image
+    el('downloadBtn').addEventListener('click', async ()=>{
+      playClick();
+      const img = document.querySelector('#outputArea img');
+      if(!img){ alert('لا توجد صورة للتحميل'); return; }
+      const url = img.src;
+      // open in new tab so user can long-press save (mobile-friendly)
+      window.open(url, '_blank');
+    });
+
+    // theme toggle simple
+    el('toggleTheme').addEventListener('click', ()=>{
+      playClick();
+      document.documentElement.classList.toggle('light-mode');
+      if(document.documentElement.classList.contains('light-mode')){
+        document.body.style.background = 'linear-gradient(180deg,#eef6ff 0%, #f5fbff 60%, #ffffff 100%)';
+        document.body.style.color = '#062033';
+      } else {
+        document.body.style.background = 'linear-gradient(180deg,#05060a 0%, #071025 60%, #02040a 100%)';
+        document.body.style.color = '#e6eef8';
+      }
+    });
+
+    // PWA install hint
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      // show simple prompt
+      const btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.textContent = 'تثبيت التطبيق';
+      btn.style.position='fixed';btn.style.left='20px';btn.style.bottom='20px';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', async ()=>{
+        playClick();
+        if(!deferredPrompt) return;
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(()=>{ btn.remove(); deferredPrompt = null; });
+      });
+    });
+
+    // Try to play short sound once to enable audio on some mobiles (optional)
+    document.addEventListener('click', ()=>{ const a=el('clickAudio'); if(a && a.paused){ a.play().then(()=>a.pause()).catch(()=>{}); }},{once:true});
   </script>
 
 </body>

@@ -1,259 +1,265 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AORTAX VISION — Abo Wateen Studio</title>
-
-  <link rel="manifest" href="./manifest.json" />
-  <meta name="theme-color" content="#001428" />
-
-  <style>
-    /* Minimal reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: "Tajawal", "Poppins", system-ui, sans-serif;
-      background: linear-gradient(180deg,#05060a 0%, #071025 60%, #02040a 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      padding-bottom:80px;
-    }
-
-    header{
-      position:sticky;top:0;z-index:40;
-      backdrop-filter: blur(8px);
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-      display:flex;align-items:center;justify-content:space-between;padding:18px 20px;
-    }
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo-wrap{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0067ff,#00d0ff);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,122,255,0.12)}
-    .logo-wrap svg{width:26px;height:26px;fill:white}
-    .brand h1{font-size:16px;color:#fff;margin:0;letter-spacing:1px}
-    .brand p{font-size:12px;color:#cfe8ff;margin:0;opacity:.8}
-
-    nav a{color:#bcd9ff;text-decoration:none;margin-left:12px;font-size:14px}
-    nav a:hover{color:white}
-
-    main{max-width:980px;margin:22px auto;padding:0 16px}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:14px;padding:20px;margin-bottom:18px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-
-    .hero h2{font-size:20px;margin-bottom:8px;color:#fff}
-    .hero p{color:#b7d7ff;margin-bottom:14px}
-    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
-    input[type="text"], textarea{
-      width:100%;max-width:720px;padding:14px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);
-      color:#e6eef8;font-size:15px;outline:none;
-    }
-    .btn{
-      display:inline-block;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:700;
-      background:linear-gradient(90deg,#007AFF,#00D0FF);color:#fff;box-shadow:0 8px 30px rgba(0,122,255,0.14);
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .btn:active{transform:translateY(1px)}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfe8ff;box-shadow:none}
-
-    .row{display:flex;gap:14px;align-items:center;justify-content:center;margin-top:12px}
-    .small{font-size:13px;color:#b8d8ff;opacity:.9}
-
-    /* gallery */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:18px}
-    .grid .tile{border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.12);min-height:120px;display:flex;align-items:center;justify-content:center}
-    .grid img{width:100%;height:100%;object-fit:cover;display:block}
-
-    /* generated */
-    .generated{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
-    .generated .image{border-radius:12px;overflow:hidden;background:#081022;padding:8px;border:1px solid rgba(255,255,255,0.03)}
-    .generated img{max-width:320px;width:100%;display:block;border-radius:8px;box-shadow:0 10px 30px rgba(0,122,255,0.12)}
-
-    /* footer */
-    footer{padding:18px;text-align:center;color:#9fbff0;opacity:.9;margin-top:30px}
-
-    /* responsive */
-    @media (max-width:520px){
-      .brand h1{font-size:14px}
-      .logo-wrap{width:40px;height:40px}
-      .btn{padding:10px 14px}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AORTAX VISION — Abo Wateen Studio</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#001428">
+<style>
+  /* (CSS مختصر واحترافي: ظلامي + زركشي أزرق) */
+  *{box-sizing:border-box;font-family: 'Tajawal',sans-serif}
+  body{margin:0;background:linear-gradient(180deg,#020617,#071124);color:#e6eefb;min-height:100vh}
+  header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background: rgba(255,255,255,0.03);backdrop-filter: blur(8px)}
+  .logo{color:#60a7ff;font-weight:700;letter-spacing:1px}
+  nav a{color:#cddffb;margin-left:12px;text-decoration:none}
+  main{padding:18px;max-width:980px;margin:0 auto}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:20px;border-radius:14px;box-shadow:0 6px 20px rgba(0,122,255,0.06)}
+  h1{margin:0 0 8px;font-size:20px}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  input[type="text"], textarea{width:100%;padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.04);color:#e6eefb;outline:none}
+  .btn{background:#007AFF;color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+  .generated{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+  .generated img{border-radius:12px;max-width:320px;width:100%;box-shadow:0 10px 30px rgba(0,122,255,0.12)}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:18px}
+  .gitem img{width:100%;border-radius:10px;display:block}
+  .small-muted{color:#9fb3d9;font-size:13px;margin-top:8px}
+  .row{display:flex;gap:10px;align-items:center}
+  footer{padding:18px;text-align:center;color:#9fb3d9;font-size:13px;margin-top:18px}
+  @media(max-width:600px){.controls{flex-direction:column}}
+</style>
 </head>
 <body>
+<header>
+  <div class="logo">AORTAX VISION</div>
+  <nav>
+    <a href="#studio">الاستوديو</a>
+    <a href="#gallery">المعرض</a>
+    <a href="#profile">حسابي</a>
+  </nav>
+</header>
 
-  <header>
-    <div class="brand">
-      <div class="logo-wrap" title="AORTAX">
-        <!-- Inline SVG logo (editable) -->
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" opacity="0.08"/><path d="M7 7h10v10H7z"/></svg>
+<main>
+  <section id="studio" class="card">
+    <h1>استوديو الذكاء الاصطناعي — AORTAX VISION</h1>
+    <p class="small-muted">اكتب الوصف بالعربية أو الإنجليزية — ثم اضغط <strong>توليد الصورة</strong>. (يدعم Pollinations: رابط مباشر)</p>
+
+    <div style="margin-top:12px">
+      <textarea id="userPrompt" rows="3" placeholder="مثال: فتاة جزائرية ترتدي ملابس تقليدية في شارع قديم عند غروب الشمس، تفاصيل: واقعية 8K، عدسة سينمائية"></textarea>
+
+      <div class="controls">
+        <button class="btn" onclick="onGenerate()">توليد الصورة</button>
+        <button class="btn ghost" onclick="enhancePrompt()">حسن الوصف (محسن)</button>
+        <button class="btn ghost" onclick="speakPrompt()">نطق الوصف</button>
+        <button class="btn ghost" onclick="toggleDark()">وضع/نمط</button>
       </div>
-      <div>
-        <h1>AORTAX VISION</h1>
-        <p>Abo Wateen Studio — تجربة صور ذكاء اصطناعي</p>
-      </div>
+
+      <div class="small-muted">نصيحة: أضف أسلوب، كاميرا، إضاءة، تفاصيل ألوان وزمن (مثال: "cinematic 50mm, volumetric light, ultra-detailed").</div>
     </div>
 
-    <nav>
-      <a href="#studio">الاستوديو</a>
-      <a href="#gallery">المعرض</a>
-      <a href="#profile">حسابي</a>
-    </nav>
-  </header>
+    <div id="output" class="generated"></div>
+    <div style="margin-top:10px" id="actionsRow"></div>
+  </section>
 
-  <main>
-    <!-- hero / studio -->
-    <section class="card hero" id="studio">
-      <h2>استوديو الذكاء الاصطناعي — أنشئ صورة فنية الان</h2>
-      <p>اكتب وصف الصورة بالعربية أو الإنجليزية، ثم اضغط "توليد الصورة". مدعوم بـ Pollinations (بدون API Key).</p>
+  <section id="gallery" class="card" style="margin-top:18px">
+    <h1>المعرض المحلي</h1>
+    <p class="small-muted">الصور التي ولّدتَها محفوظة هنا (محليًا في جهازك). يمكنك تنزيلها أو حذفها.</p>
+    <div id="localGallery" class="gallery"></div>
+  </section>
 
-      <div style="margin-top:12px">
-        <textarea id="prompt" rows="2" placeholder="مثال: مدينة مستقبلية تحت أمطار نيونية - تفصيل: ضوء أزرق، عدسة 35mm، واقعي"></textarea>
+  <section id="profile" class="card" style="margin-top:18px">
+    <h1>الملف الشخصي</h1>
+    <div class="row" style="margin-top:8px">
+      <div>مطور: Abo Wateen</div>
+      <div style="margin-left:auto"><a href="https://instagram.com/okba_bzg" target="_blank" class="small-muted">@okba_bzg</a></div>
+    </div>
+  </section>
+
+  <footer>© AORTAX VISION — Abo Wateen Studio</footer>
+</main>
+
+<script>
+/* ==== إعدادات سريعة ==== */
+const POLLINATIONS_BASE = 'https://image.pollinations.ai/prompt/';
+
+/* ==== Prompt enhancer بسيط لكنه قوي ==== */
+function enhancePrompt() {
+  const el = document.getElementById('userPrompt');
+  let txt = el.value.trim();
+  if(!txt) { alert('اكتب وصفًا أولاً'); return; }
+
+  // لو كان الوصف بالعربي نحاول نضيف كلمات إنجليزية فنية أيضاً
+  const add = [
+    'ultra-detailed','photorealistic','8k','cinematic lighting',
+    'award-winning composition','soft volumetric light','shallow depth of field'
+  ];
+
+  // نركب جملة محسنّة
+  let enhanced = txt;
+  // إذا الوصف قصير، نضيف prompt template
+  if(txt.split(' ').length < 6) {
+    enhanced += ' — photorealistic, dramatic light, ultra-detailed, 50mm';
+  } else {
+    enhanced += ', ' + add.slice(0,3).join(', ');
+  }
+
+  // نحط الاقتراح للمستخدم ويعرض في مربع النص
+  el.value = enhanced;
+}
+
+/* ==== تحويل النص إلى كلام (TTS) ==== */
+function speakPrompt() {
+  const txt = document.getElementById('userPrompt').value.trim();
+  if(!txt){ alert('اكتب وصفًا أولاً'); return; }
+  if('speechSynthesis' in window) {
+    const ut = new SpeechSynthesisUtterance(txt);
+    // اختر لغة عربية أو إنجليزية تلقائيًا حسب الحروف
+    ut.lang = /[ا-ي]/.test(txt) ? 'ar-SA' : 'en-US';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(ut);
+  } else alert('لم يتم العثور على دعم النطق في متصفحك');
+}
+
+/* ==== توليد الصورة من Pollinations وعرضها ==== */
+async function onGenerate() {
+  const prompt = document.getElementById('userPrompt').value.trim();
+  if(!prompt) return alert('اكتب وصفًا أولاً');
+  const encoded = encodeURIComponent(prompt);
+  const url = POLLINATIONS_BASE + encoded;
+
+  // عرض تحميل مؤقت
+  const out = document.getElementById('output');
+  out.innerHTML = '<div style="padding:12px;color:#9fb3d9">جاري التحميل...</div>';
+
+  // نعرض الصورة مباشرة عبر url (Pollinations يوفر صورة عند فتح الرابط)
+  // لكن للتحكم في التنزيل نحمل الـ blob ثم نعرضه
+  try {
+    const r = await fetch(url, {mode:'cors'});
+    if(!r.ok) throw new Error('خطأ في توليد الصورة: ' + r.status);
+    const blob = await r.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    out.innerHTML = `<img id="lastImg" src="${blobUrl}" alt="AI image">`;
+
+    // أزرار: تنزيل - حفظ للمعرض - إعادة تحسين
+    const actions = document.getElementById('actionsRow');
+    actions.innerHTML = `
+      <button class="btn" onclick="downloadBlob()">تنزيل الصورة</button>
+      <button class="btn ghost" onclick="saveToGallery()">حفظ للمعرض</button>
+      <button class="btn ghost" onclick="enhancedRegenerate()">تحسين وإعادة توليد</button>
+    `;
+
+    // خزن آخر blob في متغير مؤقت
+    window.__lastBlob = blob;
+    window.__lastPrompt = prompt;
+  } catch(err) {
+    out.innerHTML = '<div style="color:#f88">فشل تحميل الصورة — ' + err.message + '</div>';
+    console.error(err);
+  }
+}
+
+/* ==== تنزيل الـ blob الحالي === */
+function downloadBlob() {
+  const blob = window.__lastBlob;
+  if(!blob) return alert('لا توجد صورة للتنزيل');
+  const a = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  a.href = url;
+  const safeName = (window.__lastPrompt||'aortax-image').slice(0,30).replace(/[^a-z0-9\- ]/ig,'_');
+  a.download = safeName + '.png';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ==== حفظ محليًا في LocalStorage كـ data URL (معرض محلي) ==== */
+async function saveToGallery() {
+  const blob = window.__lastBlob;
+  if(!blob) return alert('لا توجد صورة للحفظ');
+  // نقرأ blob كـ data URL
+  const reader = new FileReader();
+  reader.onload = function() {
+    const dataURL = reader.result;
+    const gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
+    gallery.unshift({id: Date.now(), prompt: window.__lastPrompt || '', data: dataURL});
+    localStorage.setItem('aortax_gallery', JSON.stringify(gallery.slice(0,50)));
+    renderGallery();
+    alert('تم الحفظ في المعرض المحلي');
+  };
+  reader.readAsDataURL(blob);
+}
+
+/* ==== إعادة توليد محسّنة تلقائياً (نضيف كلمات فنية أقوى) ==== */
+function enhancedRegenerate() {
+  const p = document.getElementById('userPrompt');
+  p.value = p.value + ', hyper-realistic, cinematic, studio light, ultra-detailed';
+  onGenerate();
+}
+
+/* ==== عرض المعرض المحلي ==== */
+function renderGallery() {
+  const gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
+  const container = document.getElementById('localGallery');
+  container.innerHTML = '';
+  if(!gallery.length){ container.innerHTML = '<div class="small-muted">لا توجد صور محفوظة بعد.</div>'; return; }
+  for(const item of gallery) {
+    const div = document.createElement('div');
+    div.className = 'gitem';
+    div.innerHTML = `
+      <img src="${item.data}" alt="">
+      <div class="small-muted" style="margin-top:6px">
+        ${escapeHtml(item.prompt || '')}
+        <div style="margin-top:6px">
+          <button class="btn ghost" onclick='downloadData("${item.id}")'>تنزيل</button>
+          <button class="btn ghost" onclick='removeFromGallery("${item.id}")'>حذف</button>
+        </div>
       </div>
+    `;
+    container.appendChild(div);
+  }
+}
+function downloadData(id) {
+  const gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
+  const item = gallery.find(i=>i.id==id);
+  if(!item) return;
+  const a = document.createElement('a');
+  a.href = item.data;
+  a.download = (item.prompt||'aortax').slice(0,30).replace(/[^a-z0-9\- ]/ig,'_') + '.png';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+function removeFromGallery(id) {
+  let gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
+  gallery = gallery.filter(i=>i.id!=id);
+  localStorage.setItem('aortax_gallery', JSON.stringify(gallery));
+  renderGallery();
+}
 
-      <div class="row">
-        <button class="btn" id="generateBtn">توليد الصورة</button>
-        <button class="btn ghost" id="saveBtn">حفظ</button>
-        <button class="btn ghost" id="downloadBtn">تحميل</button>
+/* ==== حماية وحيل صغيرة ==== */
+function escapeHtml(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-        <label class="small" style="margin-right:8px">
-          <input type="checkbox" id="soundToggle" checked> أصوات تفاعل
-        </label>
-      </div>
+/* ==== Dark mode toggle بسيط ==== */
+function toggleDark(){
+  document.body.classList.toggle('light-mode');
+  if(document.body.classList.contains('light-mode')){
+    document.body.style.background = 'linear-gradient(180deg,#f6fbff,#dfeeff)';
+    document.body.style.color = '#0a1f3b';
+  } else {
+    document.body.style.background = 'linear-gradient(180deg,#020617,#071124)';
+    document.body.style.color = '#e6eefb';
+  }
+}
 
-      <div class="small" style="margin-top:12px">نصيحة: أضف وصفًا تفصيليًا (الخامة، الإضاءة، الزاوية، أسلوب فني)</div>
+/* ==== register service worker إذا سمح المتصفح ==== */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/service-worker.js').catch(e=>console.warn('SW fail',e));
+}
 
-      <div class="generated" id="outputArea"></div>
-    </section>
+/* ==== Init ==== */
+renderGallery();
 
-    <!-- gallery -->
-    <section class="card" id="gallery">
-      <h2>معرض مختار</h2>
-      <p class="small">أمثلة سريعة من Pollinations (عرض فقط)</p>
-
-      <div class="grid" id="sampleGrid">
-        <div class="tile"><img src="https://image.pollinations.ai/prompt/neon%20portrait" alt=""></div>
-        <div class="tile"><img src="https://image.pollinations.ai/prompt/cyberpunk%20city" alt=""></div>
-        <div class="tile"><img src="https://image.pollinations.ai/prompt/magic%20realism%20portrait" alt=""></div>
-        <div class="tile"><img src="https://image.pollinations.ai/prompt/minimalist%20sunrise%20mountain" alt=""></div>
-      </div>
-    </section>
-
-    <!-- profile -->
-    <section class="card" id="profile">
-      <h2>حسابي / الإعدادات</h2>
-      <p class="small">ميزة تسجيل الدخول قادمة — حالياً يمكن حفظ الصورة محليًا وتنزيلها.</p>
-      <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-        <button class="btn ghost" id="toggleTheme">وضع نهاري / ليلي</button>
-        <a class="btn" href="https://instagram.com/okba_bzg" target="_blank" rel="noopener">تواصل – Instagram</a>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 Abo Wateen Studio · AORTAX VISION — صمم بـ ❤️ وذكاء
-    </footer>
-  </main>
-
-  <!-- صوت تفاعل: ارفع ملف click.mp3 في نفس المجلد أو حدث المسار -->
-  <audio id="clickAudio" src="./click.mp3" preload="auto"></audio>
-
-  <script>
-    // Helper
-    const el = id => document.getElementById(id);
-    const playClick = () => {
-      const cb = el('soundToggle').checked;
-      if(!cb) return;
-      const a = el('clickAudio');
-      if(!a) return;
-      a.currentTime = 0; a.play().catch(()=>{});
-    };
-
-    // Generate image (Pollinations)
-    function generateFromPrompt(text){
-      const encoded = encodeURIComponent(text);
-      // Pollinations simple endpoint
-      return `https://image.pollinations.ai/prompt/${encoded}`;
-    }
-
-    // Actions
-    el('generateBtn').addEventListener('click', ()=>{
-      const prompt = el('prompt').value.trim();
-      if(!prompt){ alert('اكتب وصفًا أولاً'); return; }
-      playClick();
-      const url = generateFromPrompt(prompt);
-      const outputArea = el('outputArea');
-      outputArea.innerHTML = '';
-      // create image card
-      const card = document.createElement('div');
-      card.className = 'image';
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = prompt;
-      img.onload = ()=>{ playClick(); }; // click when loaded
-      card.appendChild(img);
-      outputArea.prepend(card);
-    });
-
-    // Save (localStorage as demo)
-    el('saveBtn').addEventListener('click', ()=>{
-      playClick();
-      try {
-        const imgs = Array.from(document.querySelectorAll('#outputArea img')).map(i=>i.src);
-        localStorage.setItem('aortax_saved', JSON.stringify(imgs));
-        alert('تم الحفظ محليًا في المتصفح');
-      } catch(e){ alert('خطأ في الحفظ'); }
-    });
-
-    // Download top image
-    el('downloadBtn').addEventListener('click', async ()=>{
-      playClick();
-      const img = document.querySelector('#outputArea img');
-      if(!img){ alert('لا توجد صورة للتحميل'); return; }
-      const url = img.src;
-      // open in new tab so user can long-press save (mobile-friendly)
-      window.open(url, '_blank');
-    });
-
-    // theme toggle simple
-    el('toggleTheme').addEventListener('click', ()=>{
-      playClick();
-      document.documentElement.classList.toggle('light-mode');
-      if(document.documentElement.classList.contains('light-mode')){
-        document.body.style.background = 'linear-gradient(180deg,#eef6ff 0%, #f5fbff 60%, #ffffff 100%)';
-        document.body.style.color = '#062033';
-      } else {
-        document.body.style.background = 'linear-gradient(180deg,#05060a 0%, #071025 60%, #02040a 100%)';
-        document.body.style.color = '#e6eef8';
-      }
-    });
-
-    // PWA install hint
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      // show simple prompt
-      const btn = document.createElement('button');
-      btn.className = 'btn';
-      btn.textContent = 'تثبيت التطبيق';
-      btn.style.position='fixed';btn.style.left='20px';btn.style.bottom='20px';
-      document.body.appendChild(btn);
-      btn.addEventListener('click', async ()=>{
-        playClick();
-        if(!deferredPrompt) return;
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(()=>{ btn.remove(); deferredPrompt = null; });
-      });
-    });
-
-    // Try to play short sound once to enable audio on some mobiles (optional)
-    document.addEventListener('click', ()=>{ const a=el('clickAudio'); if(a && a.paused){ a.play().then(()=>a.pause()).catch(()=>{}); }},{once:true});
-  </script>
-
+</script>
 </body>
 </html>

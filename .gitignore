@@ -1,0 +1,24 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment & secrets
+.env
+api_keys.txt
+
+# Node & dependencies
+node_modules/
+.npm/
+
+# Build / output folders
+dist/
+build/
+out/
+
+# Temporary / cache files
+*.tmp
+*.swp
+cache/

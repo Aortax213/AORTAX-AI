@@ -24,7 +24,14 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then(response => response || fetch(e.request))
-  );
+  // network-first for API calls, cache-first for static
+  const reqUrl = new URL(e.request.url);
+  if (reqUrl.origin === location.origin) {
+    e.respondWith(
+      caches.match(e.request).then(response => response || fetch(e.request))
+    );
+  } else {
+    // allow network fetch for external APIs (no caching)
+    e.respondWith(fetch(e.request).catch(()=> caches.match(e.request)));
+  }
 });

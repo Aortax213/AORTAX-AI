@@ -1,45 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AORTAX AI – Intelligent Creativity Engine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AORTAX VISION — Abo Wateen Studio</title>
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#001428"/>
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
-    body {background: radial-gradient(circle at 20% 30%, #0b0f29, #000); color: white; min-height: 100vh; display: flex; flex-direction: column;}
-    header {padding: 20px 50px; display: flex; justify-content: space-between; align-items: center;}
-    header h1 {font-size: 1.8rem; letter-spacing: 2px; color: #00d8ff;}
-    nav a {margin: 0 15px; text-decoration: none; color: #ccc; transition: .3s;}
-    nav a:hover {color: #00d8ff;}
-    section.hero {text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 20px;}
-    .hero h2 {font-size: 2.8rem; margin-bottom: 20px;}
-    .hero p {max-width: 600px; margin: 0 auto 30px; line-height: 1.6;}
-    .btn {background: #00d8ff; color: #000; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: .3s;}
-    .btn:hover {background: white;}
-    footer {text-align: center; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);}
+    :root{
+      --main:#007AFF; --bg1:#001428; --bg2:#000;
+      --glass: rgba(255,255,255,0.05);
+      --card: rgba(255,255,255,0.04);
+      --accent:#00FFA6;
+      --text:#e8f0ff;
+    }
+    [data-theme="dark"]{ --bg1:#000812; --bg2:#000; --glass:rgba(255,255,255,0.03);}
+    html,body{height:100%;margin:0;font-family:"Inter",system-ui,Segoe UI,Helvetica,Arial,"Noto Naskh Arabic",sans-serif;background: radial-gradient(circle at 10% 10%,var(--bg1),var(--bg2));color:var(--text);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--main),#00c6ff);box-shadow:0 6px 20px rgba(0,122,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
+    h1{font-size:1.05rem;margin:0;color:var(--main);letter-spacing:0.6px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;font-weight:600}
+    main{padding:22px;max-width:920px;margin:18px auto}
+    .card{background:var(--card);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.02)}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    input[type="text"],textarea{width:100%;padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:var(--text);outline:none;font-size:15px;direction:rtl}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn {background:linear-gradient(90deg,var(--main),#00c6ff);color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700;box-shadow:0 10px 30px rgba(0,122,255,0.12)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+    .preview{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:8px}
+    img.preview-img{width:100%;max-width:720px;border-radius:14px;box-shadow:0 20px 50px rgba(0,122,255,0.08)}
+    .small{font-size:13px;color:#9fb4d9}
+    .flex-between{display:flex;justify-content:space-between;align-items:center}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .thumb{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    footer{padding:18px;text-align:center;color:#9fb4d9;font-size:13px}
+    .toggle{display:inline-flex;align-items:center;gap:8px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02)}
+    .lang{cursor:pointer;font-weight:700;color:var(--text)}
+    @media(max-width:720px){.row{flex-direction:column}}
   </style>
 </head>
-<body>
+<body data-theme="dark">
   <header>
-    <h1>AORTAX AI</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Gallery</a>
-      <a href="#">About</a>
-    </nav>
+    <div class="brand">
+      <div class="logo">AV</div>
+      <div>
+        <h1>AORTAX VISION</h1>
+        <div class="small">من Abo Wateen Studio — ابتكر صور جزائرية حصرية</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="toggle chip" id="themeToggle">وضع ليلي</div>
+      <div class="chip" id="langToggle">EN</div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Intelligent Creativity for the Next Generation</h2>
-    <p>AORTAX AI empowers creators to generate stunning visuals, intelligent designs, and professional AI-driven ideas — all in seconds. 
-      Created by <strong>Abo Wateen</strong>, for the visionaries of tomorrow.</p>
-    <a href="#" class="btn">Start Creating</a>
-  </section>
+  <main>
+    <!-- STUDIO -->
+    <section class="card" id="studio">
+      <div class="flex-between">
+        <div><strong>AI Studio</strong><div class="small">اكتب وصف الصورة، ثم انقر توليد — الصور بدون علامة مائية</div></div>
+        <div class="small">تعليمات: كون دقيقًا، أذكر الألوان، الإضاءة، الأسلوب</div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="row">
+        <input id="prompt" type="text" placeholder="مثال: شاب جزائري بزي تقليدي أمام باب قديم بنور غروب سينمائي" />
+        <div style="min-width:140px;display:flex;gap:8px">
+          <button class="btn" id="generate">توليد</button>
+          <button class="btn ghost" id="enhance">حسّن البرومبت</button>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="row">
+        <div style="flex:1">
+          <div class="small">خيارات متقدمة</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <select id="styleSelect" style="padding:8px;border-radius:8px;background:rgba(255,255,255,0.03);border:none;color:var(--text)">
+              <option value="ultra realistic">Ultra realistic</option>
+              <option value="cinematic">Cinematic</option>
+              <option value="oil painting">Oil painting</option>
+              <option value="digital art">Digital art</option>
+              <option value="photorealistic">Photorealistic</option>
+            </select>
+            <input id="seed" type="text" placeholder="seed (اختياري)" style="width:140px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:none;color:var(--text)" />
+            <input id="langPrompt" type="text" placeholder="لغة: ar / en" style="width:100px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:none;color:var(--text)" />
+          </div>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="preview card" id="previewArea" style="display:none">
+        <div class="small">النتيجة — انقر الصورة لفتحها في تبويب جديد</div>
+        <img id="resultImg" class="preview-img" src="" alt="AI result" />
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn" id="downloadBtn">📥 تحميل</button>
+          <button class="btn ghost" id="saveBtn">💾 احفظ للمعرض</button>
+          <button class="btn ghost" id="shareBtn">🔗 مشاركة</button>
+          <button class="btn ghost" id="ttsBtn">🔊 اقرأ الوصف</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="card" id="galleryCard">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>المعرض المحلي</strong>
+        <div class="small">الصور المحفوظة في متصفحك (local)</div>
+      </div>
+      <div style="height:10px"></div>
+      <div id="gallery" class="gallery-grid"></div>
+    </section>
+
+    <!-- INSPIRE -->
+    <section class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Inspire</strong>
+        <div class="small">صور مثال جاهزة لإلهامك</div>
+      </div>
+      <div style="height:10px"></div>
+      <div class="gallery-grid">
+        <div class="thumb"><img src="https://image.pollinations.ai/prompt/Algerian%20landscape%20sunset%20cinematic" style="width:100%;display:block" /></div>
+        <div class="thumb"><img src="https://image.pollinations.ai/prompt/modern%20algiers%20street%20night" style="width:100%;display:block" /></div>
+        <div class="thumb"><img src="https://image.pollinations.ai/prompt/portrait%20tribal%20algeria%20cinematic" style="width:100%;display:block" /></div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © 2025 AORTAX AI | Built by Abo Wateen
+    <div>Abo Wateen Studio • AORTAX VISION</div>
+    <div style="margin-top:8px">تواصل: <a href="https://instagram.com/okba_bzg" target="_blank" style="color:var(--main)">@okba_bzg</a></div>
   </footer>
+
+  <script>
+    // ======= Helpers =======
+    const $ = id => document.getElementById(id);
+    const promptInput = $('prompt');
+    const generateBtn = $('generate');
+    const resultImg = $('resultImg');
+    const previewArea = $('previewArea');
+    const downloadBtn = $('downloadBtn');
+    const saveBtn = $('saveBtn');
+    const shareBtn = $('shareBtn');
+    const ttsBtn = $('ttsBtn');
+    const gallery = $('gallery');
+    const enhanceBtn = $('enhance');
+    const styleSelect = $('styleSelect');
+    const seedInput = $('seed');
+    const langPrompt = $('langPrompt');
+
+    // ======= Theme + Lang toggles =======
+    const themeToggle = $('themeToggle');
+    const langToggle = $('langToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+      themeToggle.textContent = document.body.dataset.theme === 'dark' ? 'وضع ليلي' : 'وضع نهاري';
+    });
+    langToggle.addEventListener('click', () => {
+      langToggle.textContent = langToggle.textContent === 'EN' ? 'AR' : 'EN';
+      // simple behavior: placeholder switch
+      if (langToggle.textContent === 'EN') {
+        promptInput.placeholder = "e.g. Algerian man in traditional garments under cinematic sunset";
+      } else {
+        promptInput.placeholder = "مثال: شاب جزائري بزي تقليدي أمام باب قديم بنور غروب سينمائي";
+      }
+    });
+
+    // ======= Pollinations generator (no watermark) =======
+    function buildPrompt(raw) {
+      const style = styleSelect.value;
+      const seed = seedInput.value.trim();
+      let p = raw.trim();
+      if (style) p += " :: " + style;
+      if (seed) p += " :: seed=" + seed;
+      return p;
+    }
+
+    function encodePrompt(p) { return encodeURIComponent(p); }
+
+    async function generateImage() {
+      const raw = promptInput.value.trim();
+      if (!raw) { alert('اكتب وصفاً قصيراً وواضحاً ثم جرّب التوليد'); return; }
+      const full = buildPrompt(raw);
+      const encoded = encodePrompt(full);
+      // direct pollinations endpoint (returns image)
+      const url = `https://image.pollinations.ai/prompt/${encoded}`;
+      // show preview
+      previewArea.style.display = 'flex';
+      resultImg.src = url + (Date.now()?`?t=${Date.now()}`:''); // cache-buster
+      resultImg.alt = raw;
+    }
+
+    generateBtn.addEventListener('click', generateImage);
+
+    // Enhance prompt (very simple enhancer)
+    enhanceBtn.addEventListener('click', () => {
+      const base = promptInput.value.trim();
+      if (!base) { alert('أدخل برومبت لتحسينه'); return; }
+      const enhanced = `${base}, ultra-detailed, dramatic lighting, high resolution, cinematic color grading`;
+      promptInput.value = enhanced;
+      alert('تم تحسين البرومبت — حاول توليد الآن');
+    });
+
+    // Download (direct link — Pollinations images are watermark-free)
+    downloadBtn.addEventListener('click', () => {
+      if (!resultImg.src) return alert('لا توجد صورة لتحميلها');
+      const a = document.createElement('a');
+      a.href = resultImg.src;
+      a.download = 'aortax-vision.png';
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+
+    // Save to local gallery (localStorage)
+    function loadGallery() {
+      const list = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
+      gallery.innerHTML = '';
+      list.reverse().forEach(src => {
+        const d = document.createElement('div'); d.className='thumb';
+        d.innerHTML = `<img src="${src}" style="display:block;width:100%"><div style="padding:6px;display:flex;gap:6px;justify-content:center"><button class="btn ghost" onclick="window.open('${src}','_blank')">فتح</button><button class="btn ghost" onclick="downloadSrc('${src}')">تحميل</button></div>`;
+        gallery.appendChild(d);
+      });
+    }
+    function downloadSrc(src){ const a=document.createElement('a'); a.href=src; a.download='aortax-gallery.png'; document.body.appendChild(a); a.click(); a.remove(); }
+
+    saveBtn.addEventListener('click', () => {
+      if (!resultImg.src) return alert('لا توجد صورة للحفظ');
+      const list = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
+      list.push(resultImg.src);
+      if (list.length>80) list.shift();
+      localStorage.setItem('aortax_gallery', JSON.stringify(list));
+      loadGallery();
+      alert('تم الحفظ في المعرض المحلي');
+    });
+
+    // Share (copy link)
+    shareBtn.addEventListener('click', async () => {
+      if (!resultImg.src) return alert('لا توجد صورة للمشاركة');
+      try {
+        await navigator.clipboard.writeText(resultImg.src);
+        alert('رابط الصورة نُسخ للحافظة');
+      } catch (e){ alert('فشل نسخ الرابط — انسخه يدوياً'); }
+    });
+
+    // TTS (Web Speech API)
+    ttsBtn.addEventListener('click', () => {
+      const text = resultImg.alt || promptInput.value || 'AORTAX VISION generated image';
+      if (!('speechSynthesis' in window)) return alert('الصوت غير مدعوم في هذا المتصفح');
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = (langPrompt.value.trim()==='en' ? 'en-US' : 'ar-SA');
+      u.rate = 0.95; u.pitch = 1;
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
+    });
+
+    // On load
+    window.addEventListener('load', () => {
+      loadGallery();
+      // quick autoplay demo: (disabled) 
+    });
+
+    // Make functions global used in gallery HTML
+    window.downloadSrc = downloadSrc;
+  </script>
 </body>
 </html>

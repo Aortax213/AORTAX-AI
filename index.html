@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ابن نافع — القرآن، الأذكار، والمواقيت</title>
 
-  <!-- PWA manifest -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0B132B">
 
   <style>
-    /* === Base theme: deep navy + gold highlights === */
     :root{
       --bg:#0B132B; --card:#0f2038; --gold:#C5A365; --muted:#9fb3d9; --glass: rgba(255,255,255,0.03);
     }
@@ -25,7 +23,7 @@
     .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:16px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
     h2{margin:0 0 8px 0;color:#fff}
     p.lead{color:var(--muted);margin:0 0 8px 0}
-    textarea,input{width:100%;padding:12px;border-radius:10px;border:none;background:var(--glass);color:inherit;outline:none}
+    textarea,input,select{width:100%;padding:12px;border-radius:10px;border:none;background:var(--glass);color:inherit;outline:none}
     .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     .btn{background:linear-gradient(90deg,var(--gold),#FFD99C);border:none;padding:10px 14px;border-radius:9px;cursor:pointer;font-weight:700;color:#051224}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
@@ -59,10 +57,10 @@
   </header>
 
   <main>
-    <!-- HOME / Today -->
+    <!-- HOME -->
     <section id="home" class="card">
       <h2>اليوم الإيماني</h2>
-      <p class="lead" id="verseOfDay">آية اليوم — جارٍ التحميل...</p>
+      <p class="lead" id="verseOfDay">جارٍ التحميل...</p>
       <div style="margin-top:10px" class="row">
         <button class="btn" id="openQuranBtn">افتح المصحف</button>
         <button class="btn ghost" id="playAyahBtn">استمع للآية</button>
@@ -70,25 +68,23 @@
       </div>
     </section>
 
-    <!-- QURAN SECTION -->
+    <!-- QURAN -->
     <section id="quran" class="card" aria-labelledby="quranTitle">
       <h2 id="quranTitle">القرآن الكريم</h2>
       <p class="small">قراءة بالرسم العثماني — اختَر السورة وابدأ الاستماع.</p>
 
       <div style="margin-top:10px" class="row">
-        <select id="surahSelect" style="padding:10px;border-radius:8px;background:var(--glass);border:none;color:inherit">
-          <option value="">تحميل سور...</option>
-        </select>
+        <select id="surahSelect"><option>تحميل السور...</option></select>
         <button class="btn" id="loadSurahBtn">تحميل السورة</button>
       </div>
 
-      <div id="quranContent" style="margin-top:12px"></div>
+      <div id="quranContent" style="margin-top:12px;direction:rtl"></div>
     </section>
 
     <!-- TASBIH -->
     <section id="tasbih" class="card">
       <h2>السبحة الاحترافية</h2>
-      <p class="small">اضغط على "تسبيح" أو اضبط الهدف وعدد التكرار.</p>
+      <p class="small">اضغط \"تسبيح\" أو اضبط الهدف وعدد التكرار.</p>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px">
         <div style="text-align:center">
           <div class="tasbih-count" id="tasbihCount">0</div>
@@ -101,7 +97,7 @@
             <button class="btn ghost" id="resetBtn">إعادة</button>
           </div>
           <div style="margin-top:8px" class="small">الهدف:
-            <select id="tasbihTarget" style="padding:6px;border-radius:6px;background:var(--glass);border:none;color:inherit">
+            <select id="tasbihTarget" style="width:auto;display:inline-block">
               <option value="33">33</option><option value="99" selected>99</option><option value="100">100</option>
             </select>
           </div>
@@ -109,15 +105,13 @@
       </div>
     </section>
 
-    <!-- PRAYER TIMES -->
+    <!-- PRAYER -->
     <section id="prayer" class="card">
       <h2>مواقيت الصلاة</h2>
       <p class="small" id="locationInfo">موقعك: -</p>
-      <div class="grid" id="timesGrid">
-        <!-- times injected -->
-      </div>
+      <div class="grid" id="timesGrid"></div>
       <div style="margin-top:10px">
-        <div>المراد التالي: <span class="countdown" id="nextCountdown">--:--:--</span></div>
+        <div>المنفلة التالية: <span class="countdown" id="nextCountdown">--:--:--</span></div>
         <div class="small" id="nextName">-</div>
       </div>
     </section>
@@ -125,21 +119,21 @@
     <!-- LESSONS -->
     <section id="lessons" class="card">
       <h2>الدروس</h2>
-      <p class="small">دروس، محاضرات وروابط مفيدة مرتبة حسب المستوى.</p>
+      <p class="small">دروس، محاضرات وروابط مفيدة.</p>
       <div id="lessonsList" style="margin-top:10px"></div>
     </section>
 
     <!-- SETTINGS -->
     <section id="settings" class="card">
       <h2>الإعدادات</h2>
-      <p class="small">التحكم في الإشعارات، نوع الأذان، قارئ التلاوة، وخيارات الحفظ.</p>
+      <p class="small">الإشعارات، القارئ، وإعدادات الحفظ.</p>
       <div style="margin-top:8px" class="row">
         <label class="small"><input type="checkbox" id="notifToggle"> تفعيل إشعارات الصلاة والأذكار</label>
         <label class="small" style="margin-right:12px">طريقة الحساب:
-          <select id="methodSelect" style="padding:6px;border-radius:6px;background:var(--glass);border:none;color:inherit">
-            <option value="2">التقويم الإسلامي (مركز)</option>
-            <option value="3">إسلامية - خيار 3</option>
-            <option value="4">أخرى</option>
+          <select id="methodSelect" style="width:auto;display:inline-block">
+            <option value="2">أم القرى</option>
+            <option value="4">الجامعة الإسلامية</option>
+            <option value="8">توقيت آخر</option>
           </select>
         </label>
       </div>
@@ -147,49 +141,57 @@
 
   </main>
 
-  <footer>© ابن نافع — Abo Wateen Studio · مصدرك للقرآن والذكر</footer>
+  <footer>© ابن نافع — Abo Wateen Studio</footer>
 
-  <!-- audio placeholder (يرتبط بروابط قرّاء عند اختيار السورة) -->
+  <!-- audio player (we use WebAudio for short clicks; audioPlayer for recitations) -->
   <audio id="audioPlayer" preload="none"></audio>
 
 <script>
 /* ====== CONFIG ====== */
-const QURAN_API = 'https://api.alquran.cloud/v1'; // AlQuran.cloud
+const QURAN_API = 'https://api.alquran.cloud/v1'; // نصوص موثوقة
 const ADHAN_BASE = 'https://api.aladhan.com/v1';
-const userLocale = navigator.language || 'ar';
-
-/* ====== Helpers ====== */
 const $ = id => document.getElementById(id);
-const setText = (id, txt) => { const el=$(id); if(el) el.textContent = txt; };
 
-/* ====== Verse of the day (simple: fetch random ayah from API) ====== */
-async function loadVerseOfDay(){
+/* ====== WebAudio click (so no external mp3 needed) ====== */
+let audioCtx = null;
+function playClickSound(){
   try{
-    // fetch list of surahs then pick random ayah (simple approach)
-    const res = await fetch(`${QURAN_API}/surah`);
-    const j = await res.json();
-    if(!j || !j.data) return setText('verseOfDay','القرآن متاح الآن');
-    // pick a random surah and ayah
-    const surah = j.data[Math.floor(Math.random()*j.data.length)];
-    const ayahIndex = Math.min(1, Math.max(1, Math.floor(surah.number/ (surah.number||1) ))); // fallback
-    // better: fetch first ayah of surah for demo
-    const ay = await fetch(`${QURAN_API}/surah/${surah.number}/ar.alafasy`);
-    const ayj = await ay.json();
-    if(ayj && ayj.data && ayj.data.ayahs && ayj.data.ayahs[0]) {
-      const text = ayj.data.ayahs[0].text || ayj.data.text || 'بسم الله';
-      setText('verseOfDay', text + ` — ﴿${surah.name}﴾`);
-    } else setText('verseOfDay','سورة جاهزة للاستماع');
-  }catch(e){ console.warn(e); setText('verseOfDay','لا يوجد اتصال بالإنترنت'); }
+    if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = 'sine'; o.frequency.value = 900;
+    g.gain.value = 0.0001;
+    o.connect(g); g.connect(audioCtx.destination);
+    const now = audioCtx.currentTime;
+    g.gain.setValueAtTime(0.0001, now);
+    g.gain.exponentialRampToValueAtTime(0.02, now + 0.005);
+    o.start(now); o.stop(now + 0.06);
+    g.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+  }catch(e){ console.warn('Audio error', e); }
 }
 
-/* ====== Load surah list into select (Quran) ====== */
+/* ====== Verse of the Day (first ayah of a random surah as demo) ====== */
+async function loadVerseOfDay(){
+  try{
+    const res = await fetch(`${QURAN_API}/surah`);
+    const j = await res.json();
+    if(!j.data) return $('verseOfDay').textContent = 'القرآن غير متاح';
+    const surah = j.data[Math.floor(Math.random()*j.data.length)];
+    const r = await fetch(`${QURAN_API}/surah/${surah.number}`);
+    const s = await r.json();
+    if(s && s.data && s.data.ayahs && s.data.ayahs.length){
+      $('verseOfDay').textContent = s.data.ayahs[0].text + ` — ﴿${surah.englishName}﴾`;
+    } else $('verseOfDay').textContent = 'القرآن متاح';
+  }catch(e){ console.warn(e); $('verseOfDay').textContent = 'تعذر الاتصال'; }
+}
+
+/* ====== Surah list & load surah ====== */
 async function loadSurahList(){
   try{
     const res = await fetch(`${QURAN_API}/surah`);
     const j = await res.json();
     if(j && j.data){
-      const sel = $('surahSelect');
-      sel.innerHTML = '<option value="">اختر السورة</option>';
+      const sel = $('surahSelect'); sel.innerHTML = '<option value="">اختر السورة</option>';
       j.data.forEach(s=>{
         const opt = document.createElement('option');
         opt.value = s.number;
@@ -200,21 +202,32 @@ async function loadSurahList(){
   }catch(e){ console.error(e); $('surahSelect').innerHTML='<option>خطأ في التحميل</option>'; }
 }
 
-/* ====== Load Surah content (text) ====== */
 async function loadSurah(number){
   try{
-    setText('quranContent','جارٍ تحميل السورة...');
+    $('quranContent').innerHTML = 'جارٍ التحميل...';
     const r = await fetch(`${QURAN_API}/surah/${number}`);
     const j = await r.json();
     if(j && j.data){
-      const c = j.data.ayahs.map(a=>`<p style="direction:rtl;font-size:20px;margin:8px 0">${a.text} <span class="small" style="display:block;font-size:12px;margin-top:6px">(${a.numberInSurah})</span></p>`).join('');
-      $('quranContent').innerHTML = `<div>${c}</div>`;
+      const html = j.data.ayahs.map(a=>`<p style="direction:rtl;font-size:20px;margin:8px 0">${a.text} <span class="small" style="display:block;font-size:12px;margin-top:6px">(${a.numberInSurah})</span></p>`).join('');
+      $('quranContent').innerHTML = html;
       window.scrollTo({top:0,behavior:'smooth'});
-    } else $('quranContent').innerHTML = 'فشل تحميل السورة';
-  }catch(e){ console.error(e); $('quranContent').innerHTML = 'فشل الاتصال'; }
+    } else $('quranContent').textContent = 'فشل تحميل السورة';
+  }catch(e){ console.error(e); $('quranContent').textContent = 'فشل الاتصال'; }
 }
 
-/* ====== Prayer times (AlAdhan) ====== */
+/* ====== Play ayah via audio file if available (we will use Quran.com recitations if needed) ====== */
+function playRecitation(url){
+  try{
+    const ap = $('audioPlayer');
+    ap.src = url;
+    ap.play().catch(err=>{
+      // require user gesture
+      alert('اضغط زرًا لتشغيل الصوت أولاً (مطلب المتصفح).');
+    });
+  }catch(e){ console.warn(e); }
+}
+
+/* ====== Prayer times via AlAdhan ====== */
 async function fetchPrayerTimes(lat, lon, method=2){
   try{
     const t = Math.floor(Date.now()/1000);
@@ -226,22 +239,19 @@ async function fetchPrayerTimes(lat, lon, method=2){
 }
 
 function renderTimings(data){
-  if(!data) { $('timesGrid').innerHTML = '<div class="small">لا يوجد مواقيت</div>'; return; }
+  if(!data){ $('timesGrid').innerHTML = 'لا توجد مواقيت'; return; }
   const timings = data.timings;
   const order = ['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'];
   $('timesGrid').innerHTML = '';
   order.forEach(k=>{
-    const div = document.createElement('div');
-    div.className='time-box';
+    const div = document.createElement('div'); div.className='time-box';
     div.innerHTML = `<div class="small">${k}</div><div style="font-weight:800">${timings[k]}</div>`;
     $('timesGrid').appendChild(div);
   });
-  // next prayer countdown
   findNextPrayer(timings);
-  $('locationInfo').textContent = data.meta && data.meta.timezone ? `${data.meta.timezone} — ${data.date.readable}` : '';
+  $('locationInfo').textContent = data.meta ? `${data.meta.timezone} — ${data.date.readable}` : '';
 }
 
-/* helper convert "HH:MM" to Date object today */
 function timeStrToDate(t){
   const [hh,mm] = t.split(':').map(x=>parseInt(x));
   const now = new Date();
@@ -260,9 +270,7 @@ function findNextPrayer(timings){
       return;
     }
   }
-  // tomorrow fajr (simple)
-  const tomorrowFajr = timeStrToDate(timings['Fajr']);
-  tomorrowFajr.setDate(tomorrowFajr.getDate()+1);
+  const tomorrowFajr = timeStrToDate(timings['Fajr']); tomorrowFajr.setDate(tomorrowFajr.getDate()+1);
   startCountdown(tomorrowFajr, 'Fajr (غداً)');
 }
 
@@ -282,37 +290,46 @@ function startCountdown(targetDate, name){
 }
 
 /* ====== Tasbih (localStorage) ====== */
-const TASB_KEY = 'ibnnaaf_tasbih';
+const TASB_KEY = 'ibnnaaf_tasbih_v1';
 let tasb = JSON.parse(localStorage.getItem(TASB_KEY)||'{"count":0,"target":99}');
 $('tasbihCount').textContent = tasb.count;
 $('tasbihTarget').value = tasb.target;
 
 function saveTasb(){ localStorage.setItem(TASB_KEY, JSON.stringify(tasb)); }
-$('incBtn').addEventListener('click', ()=>{ tasb.count++; $('tasbihCount').textContent=tasb.count; playClick(); if(tasb.count>=tasb.target) alert('سبحان الله — وصلت الهدف!'); saveTasb(); });
+$('incBtn').addEventListener('click', ()=>{ tasb.count++; $('tasbihCount').textContent=tasb.count; playClick(); if(tasb.count>=tasb.target) setTimeout(()=>alert('مبروك وصلت الهدف!'),50); saveTasb(); });
 $('decBtn').addEventListener('click', ()=>{ if(tasb.count>0) tasb.count--; $('tasbihCount').textContent=tasb.count; saveTasb(); });
 $('resetBtn').addEventListener('click', ()=>{ tasb.count=0; $('tasbihCount').textContent=0; saveTasb(); });
-$('tasbihTarget').addEventListener('change', ()=>{ tasb.target = parseInt($('tasbihTarget').value); saveTasb(); });
 
-/* small click/vibrate */
-function playClick(){ if(navigator.vibrate) navigator.vibrate(30); }
+function playClick(){ playClickSound(); if(navigator.vibrate) navigator.vibrate(25); }
 
-/* ====== Lessons (placeholder content) ====== */
+/* ====== Lessons placeholder ====== */
 function loadLessons(){
   const lessons = [
-    {title:'تفسير الفاتحة — مقدمة', type:'audio', url:'https://www.youtube.com/embed/XXXXX'},
-    {title:'أحكام التجويد — الحلقة 1', type:'video', url:'https://www.youtube.com/embed/YYYYY'},
+    {title:'تفسير الفاتحة — مقدمة', type:'video', url:'https://www.youtube.com/embed/XXXX'},
+    {title:'أحكام التجويد — الحلقة 1', type:'video', url:'https://www.youtube.com/embed/YYYY'},
     {title:'حفظ القرآن — دليل عملي', type:'article', url:'#'}
   ];
-  const c = lessons.map(ls=>`<div style="margin-bottom:8px;padding:8px;background:rgba(255,255,255,0.01);border-radius:8px"><strong>${ls.title}</strong><div class="small">${ls.type}</div></div>`).join('');
-  $('lessonsList').innerHTML = c;
+  $('lessonsList').innerHTML = lessons.map(l=>`<div style="margin-bottom:8px;padding:8px;background:rgba(255,255,255,0.01);border-radius:8px"><strong>${l.title}</strong><div class="small">${l.type}</div></div>`).join('');
 }
 
-/* ====== INIT: location -> prayer times, surah list, verse of day ====== */
+/* ====== Notifications (local demo) ====== */
+async function requestNotificationPermission(){
+  if(!('Notification' in window)) return alert('المتصفح لا يدعم الإشعارات');
+  const perm = await Notification.requestPermission();
+  if(perm === 'granted') alert('تم تفعيل الإشعارات (نسخة محلية). لتفعيل الإشعارات عند الإغلاق استخدم OneSignal أو Firebase).');
+}
+
+/* ====== Register service worker ====== */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/service-worker.js').catch(e=>console.warn('SW error',e));
+}
+
+/* ====== Init app (geolocation -> prayer times, surah list, verse) ====== */
 async function initApp(){
   loadVerseOfDay();
   loadSurahList();
   loadLessons();
-  // request geolocation for prayer times
+
   try{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(async pos=>{
@@ -331,17 +348,20 @@ async function initApp(){
 }
 
 /* Event bindings */
-$('loadSurahBtn').addEventListener('click', ()=>{ const v=$('surahSelect').value; if(v) loadSurah(v); else alert('اختر السورة أولاً'); });
+$('loadSurahBtn').addEventListener('click', ()=>{ const v=$('surahSelect').value; if(v) loadSurah(v); else alert('اختر السورة'); });
 $('openQuranBtn').addEventListener('click', ()=>{ location.href='#quran'; });
-$('playAyahBtn').addEventListener('click', ()=>{ alert('سيتم ربط مشغل التلاوات لاحقاً'); });
-$('reminderBtn').addEventListener('click', ()=>{ alert('سيتم تفعيل التذكير وإشعارات الأذكار عندما تسمح بالتثبيت/إشعارات'); });
+$('playAyahBtn').addEventListener('click', ()=>{ 
+  // demo: play first ayah recitation from Quran.com (alafasy example)
+  // you can change reciter or use better URLs
+  const surah = $('surahSelect').value || 1;
+  // build audio url via everyayah or quran.com if accessible (some require CORS)
+  const reciter = 'ar.alafasy'; // demo placeholder may work via AlQuran.cloud endpoints
+  playRecitation(`https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/1/1`); // may need correct path per API
+});
+$('reminderBtn').addEventListener('click', ()=>{ requestNotificationPermission(); });
 
-/* register service worker for PWA */
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js').catch(e=>console.warn('SW failed',e)); }
-
-/* start */
+// start
 initApp();
-
 </script>
 </body>
 </html>

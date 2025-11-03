@@ -1,264 +1,346 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AORTAX VISION — Abo Wateen Studio</title>
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#001428">
-<style>
-  /* (CSS مختصر واحترافي: ظلامي + زركشي أزرق) */
-  *{box-sizing:border-box;font-family: 'Tajawal',sans-serif}
-  body{margin:0;background:linear-gradient(180deg,#020617,#071124);color:#e6eefb;min-height:100vh}
-  header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background: rgba(255,255,255,0.03);backdrop-filter: blur(8px)}
-  .logo{color:#60a7ff;font-weight:700;letter-spacing:1px}
-  nav a{color:#cddffb;margin-left:12px;text-decoration:none}
-  main{padding:18px;max-width:980px;margin:0 auto}
-  .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:20px;border-radius:14px;box-shadow:0 6px 20px rgba(0,122,255,0.06)}
-  h1{margin:0 0 8px;font-size:20px}
-  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  input[type="text"], textarea{width:100%;padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.04);color:#e6eefb;outline:none}
-  .btn{background:#007AFF;color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
-  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
-  .generated{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
-  .generated img{border-radius:12px;max-width:320px;width:100%;box-shadow:0 10px 30px rgba(0,122,255,0.12)}
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:18px}
-  .gitem img{width:100%;border-radius:10px;display:block}
-  .small-muted{color:#9fb3d9;font-size:13px;margin-top:8px}
-  .row{display:flex;gap:10px;align-items:center}
-  footer{padding:18px;text-align:center;color:#9fb3d9;font-size:13px;margin-top:18px}
-  @media(max-width:600px){.controls{flex-direction:column}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ابن نافع — القرآن، الأذكار، والمواقيت</title>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B132B">
+
+  <style>
+    /* === Base theme: deep navy + gold highlights === */
+    :root{
+      --bg:#0B132B; --card:#0f2038; --gold:#C5A365; --muted:#9fb3d9; --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box;font-family:"Tajawal",sans-serif}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#020617);color:#eef6ff}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.02)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#F3E0B5);display:flex;align-items:center;justify-content:center;color:#051224;font-weight:800}
+    .title{font-weight:800;font-size:16px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-weight:600}
+    main{max-width:980px;margin:18px auto;padding:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:16px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h2{margin:0 0 8px 0;color:#fff}
+    p.lead{color:var(--muted);margin:0 0 8px 0}
+    textarea,input{width:100%;padding:12px;border-radius:10px;border:none;background:var(--glass);color:inherit;outline:none}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .btn{background:linear-gradient(90deg,var(--gold),#FFD99C);border:none;padding:10px 14px;border-radius:9px;cursor:pointer;font-weight:700;color:#051224}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:10px}
+    .time-box{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;text-align:center}
+    .countdown{font-weight:800;font-size:18px;color:#fff}
+    .tasbih-count{font-size:44px;font-weight:800;color:var(--gold)}
+    footer{text-align:center;color:var(--muted);padding:16px;margin-top:8px}
+    @media(max-width:600px){.row{flex-direction:column}}
+  </style>
 </head>
 <body>
-<header>
-  <div class="logo">AORTAX VISION</div>
-  <nav>
-    <a href="#studio">الاستوديو</a>
-    <a href="#gallery">المعرض</a>
-    <a href="#profile">حسابي</a>
-  </nav>
-</header>
 
-<main>
-  <section id="studio" class="card">
-    <h1>استوديو الذكاء الاصطناعي — AORTAX VISION</h1>
-    <p class="small-muted">اكتب الوصف بالعربية أو الإنجليزية — ثم اضغط <strong>توليد الصورة</strong>. (يدعم Pollinations: رابط مباشر)</p>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">ب</div>
+      <div>
+        <div class="title">ابن نافع</div>
+        <div class="small">مصحف رقمي – تلاوات – مواقيت – أذكار</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#quran">القرآن</a>
+      <a href="#tasbih">السبحة</a>
+      <a href="#prayer">الصلاة</a>
+      <a href="#lessons">الدروس</a>
+      <a href="#settings">الإعدادات</a>
+    </nav>
+  </header>
 
-    <div style="margin-top:12px">
-      <textarea id="userPrompt" rows="3" placeholder="مثال: فتاة جزائرية ترتدي ملابس تقليدية في شارع قديم عند غروب الشمس، تفاصيل: واقعية 8K، عدسة سينمائية"></textarea>
+  <main>
+    <!-- HOME / Today -->
+    <section id="home" class="card">
+      <h2>اليوم الإيماني</h2>
+      <p class="lead" id="verseOfDay">آية اليوم — جارٍ التحميل...</p>
+      <div style="margin-top:10px" class="row">
+        <button class="btn" id="openQuranBtn">افتح المصحف</button>
+        <button class="btn ghost" id="playAyahBtn">استمع للآية</button>
+        <button class="btn ghost" id="reminderBtn">تفعيل تذكير الأذكار</button>
+      </div>
+    </section>
 
-      <div class="controls">
-        <button class="btn" onclick="onGenerate()">توليد الصورة</button>
-        <button class="btn ghost" onclick="enhancePrompt()">حسن الوصف (محسن)</button>
-        <button class="btn ghost" onclick="speakPrompt()">نطق الوصف</button>
-        <button class="btn ghost" onclick="toggleDark()">وضع/نمط</button>
+    <!-- QURAN SECTION -->
+    <section id="quran" class="card" aria-labelledby="quranTitle">
+      <h2 id="quranTitle">القرآن الكريم</h2>
+      <p class="small">قراءة بالرسم العثماني — اختَر السورة وابدأ الاستماع.</p>
+
+      <div style="margin-top:10px" class="row">
+        <select id="surahSelect" style="padding:10px;border-radius:8px;background:var(--glass);border:none;color:inherit">
+          <option value="">تحميل سور...</option>
+        </select>
+        <button class="btn" id="loadSurahBtn">تحميل السورة</button>
       </div>
 
-      <div class="small-muted">نصيحة: أضف أسلوب، كاميرا، إضاءة، تفاصيل ألوان وزمن (مثال: "cinematic 50mm, volumetric light, ultra-detailed").</div>
-    </div>
+      <div id="quranContent" style="margin-top:12px"></div>
+    </section>
 
-    <div id="output" class="generated"></div>
-    <div style="margin-top:10px" id="actionsRow"></div>
-  </section>
-
-  <section id="gallery" class="card" style="margin-top:18px">
-    <h1>المعرض المحلي</h1>
-    <p class="small-muted">الصور التي ولّدتَها محفوظة هنا (محليًا في جهازك). يمكنك تنزيلها أو حذفها.</p>
-    <div id="localGallery" class="gallery"></div>
-  </section>
-
-  <section id="profile" class="card" style="margin-top:18px">
-    <h1>الملف الشخصي</h1>
-    <div class="row" style="margin-top:8px">
-      <div>مطور: Abo Wateen</div>
-      <div style="margin-left:auto"><a href="https://instagram.com/okba_bzg" target="_blank" class="small-muted">@okba_bzg</a></div>
-    </div>
-  </section>
-
-  <footer>© AORTAX VISION — Abo Wateen Studio</footer>
-</main>
-
-<script>
-/* ==== إعدادات سريعة ==== */
-const POLLINATIONS_BASE = 'https://image.pollinations.ai/prompt/';
-
-/* ==== Prompt enhancer بسيط لكنه قوي ==== */
-function enhancePrompt() {
-  const el = document.getElementById('userPrompt');
-  let txt = el.value.trim();
-  if(!txt) { alert('اكتب وصفًا أولاً'); return; }
-
-  // لو كان الوصف بالعربي نحاول نضيف كلمات إنجليزية فنية أيضاً
-  const add = [
-    'ultra-detailed','photorealistic','8k','cinematic lighting',
-    'award-winning composition','soft volumetric light','shallow depth of field'
-  ];
-
-  // نركب جملة محسنّة
-  let enhanced = txt;
-  // إذا الوصف قصير، نضيف prompt template
-  if(txt.split(' ').length < 6) {
-    enhanced += ' — photorealistic, dramatic light, ultra-detailed, 50mm';
-  } else {
-    enhanced += ', ' + add.slice(0,3).join(', ');
-  }
-
-  // نحط الاقتراح للمستخدم ويعرض في مربع النص
-  el.value = enhanced;
-}
-
-/* ==== تحويل النص إلى كلام (TTS) ==== */
-function speakPrompt() {
-  const txt = document.getElementById('userPrompt').value.trim();
-  if(!txt){ alert('اكتب وصفًا أولاً'); return; }
-  if('speechSynthesis' in window) {
-    const ut = new SpeechSynthesisUtterance(txt);
-    // اختر لغة عربية أو إنجليزية تلقائيًا حسب الحروف
-    ut.lang = /[ا-ي]/.test(txt) ? 'ar-SA' : 'en-US';
-    speechSynthesis.cancel();
-    speechSynthesis.speak(ut);
-  } else alert('لم يتم العثور على دعم النطق في متصفحك');
-}
-
-/* ==== توليد الصورة من Pollinations وعرضها ==== */
-async function onGenerate() {
-  const prompt = document.getElementById('userPrompt').value.trim();
-  if(!prompt) return alert('اكتب وصفًا أولاً');
-  const encoded = encodeURIComponent(prompt);
-  const url = POLLINATIONS_BASE + encoded;
-
-  // عرض تحميل مؤقت
-  const out = document.getElementById('output');
-  out.innerHTML = '<div style="padding:12px;color:#9fb3d9">جاري التحميل...</div>';
-
-  // نعرض الصورة مباشرة عبر url (Pollinations يوفر صورة عند فتح الرابط)
-  // لكن للتحكم في التنزيل نحمل الـ blob ثم نعرضه
-  try {
-    const r = await fetch(url, {mode:'cors'});
-    if(!r.ok) throw new Error('خطأ في توليد الصورة: ' + r.status);
-    const blob = await r.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    out.innerHTML = `<img id="lastImg" src="${blobUrl}" alt="AI image">`;
-
-    // أزرار: تنزيل - حفظ للمعرض - إعادة تحسين
-    const actions = document.getElementById('actionsRow');
-    actions.innerHTML = `
-      <button class="btn" onclick="downloadBlob()">تنزيل الصورة</button>
-      <button class="btn ghost" onclick="saveToGallery()">حفظ للمعرض</button>
-      <button class="btn ghost" onclick="enhancedRegenerate()">تحسين وإعادة توليد</button>
-    `;
-
-    // خزن آخر blob في متغير مؤقت
-    window.__lastBlob = blob;
-    window.__lastPrompt = prompt;
-  } catch(err) {
-    out.innerHTML = '<div style="color:#f88">فشل تحميل الصورة — ' + err.message + '</div>';
-    console.error(err);
-  }
-}
-
-/* ==== تنزيل الـ blob الحالي === */
-function downloadBlob() {
-  const blob = window.__lastBlob;
-  if(!blob) return alert('لا توجد صورة للتنزيل');
-  const a = document.createElement('a');
-  const url = URL.createObjectURL(blob);
-  a.href = url;
-  const safeName = (window.__lastPrompt||'aortax-image').slice(0,30).replace(/[^a-z0-9\- ]/ig,'_');
-  a.download = safeName + '.png';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
-
-/* ==== حفظ محليًا في LocalStorage كـ data URL (معرض محلي) ==== */
-async function saveToGallery() {
-  const blob = window.__lastBlob;
-  if(!blob) return alert('لا توجد صورة للحفظ');
-  // نقرأ blob كـ data URL
-  const reader = new FileReader();
-  reader.onload = function() {
-    const dataURL = reader.result;
-    const gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
-    gallery.unshift({id: Date.now(), prompt: window.__lastPrompt || '', data: dataURL});
-    localStorage.setItem('aortax_gallery', JSON.stringify(gallery.slice(0,50)));
-    renderGallery();
-    alert('تم الحفظ في المعرض المحلي');
-  };
-  reader.readAsDataURL(blob);
-}
-
-/* ==== إعادة توليد محسّنة تلقائياً (نضيف كلمات فنية أقوى) ==== */
-function enhancedRegenerate() {
-  const p = document.getElementById('userPrompt');
-  p.value = p.value + ', hyper-realistic, cinematic, studio light, ultra-detailed';
-  onGenerate();
-}
-
-/* ==== عرض المعرض المحلي ==== */
-function renderGallery() {
-  const gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
-  const container = document.getElementById('localGallery');
-  container.innerHTML = '';
-  if(!gallery.length){ container.innerHTML = '<div class="small-muted">لا توجد صور محفوظة بعد.</div>'; return; }
-  for(const item of gallery) {
-    const div = document.createElement('div');
-    div.className = 'gitem';
-    div.innerHTML = `
-      <img src="${item.data}" alt="">
-      <div class="small-muted" style="margin-top:6px">
-        ${escapeHtml(item.prompt || '')}
-        <div style="margin-top:6px">
-          <button class="btn ghost" onclick='downloadData("${item.id}")'>تنزيل</button>
-          <button class="btn ghost" onclick='removeFromGallery("${item.id}")'>حذف</button>
+    <!-- TASBIH -->
+    <section id="tasbih" class="card">
+      <h2>السبحة الاحترافية</h2>
+      <p class="small">اضغط على "تسبيح" أو اضبط الهدف وعدد التكرار.</p>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <div style="text-align:center">
+          <div class="tasbih-count" id="tasbihCount">0</div>
+          <div class="small">العدد الحالي</div>
+        </div>
+        <div style="flex:1">
+          <div class="row">
+            <button class="btn" id="incBtn">تسبيح</button>
+            <button class="btn ghost" id="decBtn">نزول</button>
+            <button class="btn ghost" id="resetBtn">إعادة</button>
+          </div>
+          <div style="margin-top:8px" class="small">الهدف:
+            <select id="tasbihTarget" style="padding:6px;border-radius:6px;background:var(--glass);border:none;color:inherit">
+              <option value="33">33</option><option value="99" selected>99</option><option value="100">100</option>
+            </select>
+          </div>
         </div>
       </div>
-    `;
-    container.appendChild(div);
+    </section>
+
+    <!-- PRAYER TIMES -->
+    <section id="prayer" class="card">
+      <h2>مواقيت الصلاة</h2>
+      <p class="small" id="locationInfo">موقعك: -</p>
+      <div class="grid" id="timesGrid">
+        <!-- times injected -->
+      </div>
+      <div style="margin-top:10px">
+        <div>المراد التالي: <span class="countdown" id="nextCountdown">--:--:--</span></div>
+        <div class="small" id="nextName">-</div>
+      </div>
+    </section>
+
+    <!-- LESSONS -->
+    <section id="lessons" class="card">
+      <h2>الدروس</h2>
+      <p class="small">دروس، محاضرات وروابط مفيدة مرتبة حسب المستوى.</p>
+      <div id="lessonsList" style="margin-top:10px"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="card">
+      <h2>الإعدادات</h2>
+      <p class="small">التحكم في الإشعارات، نوع الأذان، قارئ التلاوة، وخيارات الحفظ.</p>
+      <div style="margin-top:8px" class="row">
+        <label class="small"><input type="checkbox" id="notifToggle"> تفعيل إشعارات الصلاة والأذكار</label>
+        <label class="small" style="margin-right:12px">طريقة الحساب:
+          <select id="methodSelect" style="padding:6px;border-radius:6px;background:var(--glass);border:none;color:inherit">
+            <option value="2">التقويم الإسلامي (مركز)</option>
+            <option value="3">إسلامية - خيار 3</option>
+            <option value="4">أخرى</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© ابن نافع — Abo Wateen Studio · مصدرك للقرآن والذكر</footer>
+
+  <!-- audio placeholder (يرتبط بروابط قرّاء عند اختيار السورة) -->
+  <audio id="audioPlayer" preload="none"></audio>
+
+<script>
+/* ====== CONFIG ====== */
+const QURAN_API = 'https://api.alquran.cloud/v1'; // AlQuran.cloud
+const ADHAN_BASE = 'https://api.aladhan.com/v1';
+const userLocale = navigator.language || 'ar';
+
+/* ====== Helpers ====== */
+const $ = id => document.getElementById(id);
+const setText = (id, txt) => { const el=$(id); if(el) el.textContent = txt; };
+
+/* ====== Verse of the day (simple: fetch random ayah from API) ====== */
+async function loadVerseOfDay(){
+  try{
+    // fetch list of surahs then pick random ayah (simple approach)
+    const res = await fetch(`${QURAN_API}/surah`);
+    const j = await res.json();
+    if(!j || !j.data) return setText('verseOfDay','القرآن متاح الآن');
+    // pick a random surah and ayah
+    const surah = j.data[Math.floor(Math.random()*j.data.length)];
+    const ayahIndex = Math.min(1, Math.max(1, Math.floor(surah.number/ (surah.number||1) ))); // fallback
+    // better: fetch first ayah of surah for demo
+    const ay = await fetch(`${QURAN_API}/surah/${surah.number}/ar.alafasy`);
+    const ayj = await ay.json();
+    if(ayj && ayj.data && ayj.data.ayahs && ayj.data.ayahs[0]) {
+      const text = ayj.data.ayahs[0].text || ayj.data.text || 'بسم الله';
+      setText('verseOfDay', text + ` — ﴿${surah.name}﴾`);
+    } else setText('verseOfDay','سورة جاهزة للاستماع');
+  }catch(e){ console.warn(e); setText('verseOfDay','لا يوجد اتصال بالإنترنت'); }
+}
+
+/* ====== Load surah list into select (Quran) ====== */
+async function loadSurahList(){
+  try{
+    const res = await fetch(`${QURAN_API}/surah`);
+    const j = await res.json();
+    if(j && j.data){
+      const sel = $('surahSelect');
+      sel.innerHTML = '<option value="">اختر السورة</option>';
+      j.data.forEach(s=>{
+        const opt = document.createElement('option');
+        opt.value = s.number;
+        opt.textContent = `${s.number} — ${s.englishName} — ${s.name}`;
+        sel.appendChild(opt);
+      });
+    }
+  }catch(e){ console.error(e); $('surahSelect').innerHTML='<option>خطأ في التحميل</option>'; }
+}
+
+/* ====== Load Surah content (text) ====== */
+async function loadSurah(number){
+  try{
+    setText('quranContent','جارٍ تحميل السورة...');
+    const r = await fetch(`${QURAN_API}/surah/${number}`);
+    const j = await r.json();
+    if(j && j.data){
+      const c = j.data.ayahs.map(a=>`<p style="direction:rtl;font-size:20px;margin:8px 0">${a.text} <span class="small" style="display:block;font-size:12px;margin-top:6px">(${a.numberInSurah})</span></p>`).join('');
+      $('quranContent').innerHTML = `<div>${c}</div>`;
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else $('quranContent').innerHTML = 'فشل تحميل السورة';
+  }catch(e){ console.error(e); $('quranContent').innerHTML = 'فشل الاتصال'; }
+}
+
+/* ====== Prayer times (AlAdhan) ====== */
+async function fetchPrayerTimes(lat, lon, method=2){
+  try{
+    const t = Math.floor(Date.now()/1000);
+    const url = `${ADHAN_BASE}/timings/${t}?latitude=${lat}&longitude=${lon}&method=${method}`;
+    const r = await fetch(url);
+    const j = await r.json();
+    return j.data;
+  }catch(e){ console.error(e); return null; }
+}
+
+function renderTimings(data){
+  if(!data) { $('timesGrid').innerHTML = '<div class="small">لا يوجد مواقيت</div>'; return; }
+  const timings = data.timings;
+  const order = ['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'];
+  $('timesGrid').innerHTML = '';
+  order.forEach(k=>{
+    const div = document.createElement('div');
+    div.className='time-box';
+    div.innerHTML = `<div class="small">${k}</div><div style="font-weight:800">${timings[k]}</div>`;
+    $('timesGrid').appendChild(div);
+  });
+  // next prayer countdown
+  findNextPrayer(timings);
+  $('locationInfo').textContent = data.meta && data.meta.timezone ? `${data.meta.timezone} — ${data.date.readable}` : '';
+}
+
+/* helper convert "HH:MM" to Date object today */
+function timeStrToDate(t){
+  const [hh,mm] = t.split(':').map(x=>parseInt(x));
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm, 0);
+}
+
+let countdownInterval = null;
+function findNextPrayer(timings){
+  const order = ['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'];
+  const now = new Date();
+  for(let i=0;i<order.length;i++){
+    const name = order[i];
+    const t = timeStrToDate(timings[name]);
+    if(t.getTime() > now.getTime()){
+      startCountdown(t, name);
+      return;
+    }
   }
-}
-function downloadData(id) {
-  const gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
-  const item = gallery.find(i=>i.id==id);
-  if(!item) return;
-  const a = document.createElement('a');
-  a.href = item.data;
-  a.download = (item.prompt||'aortax').slice(0,30).replace(/[^a-z0-9\- ]/ig,'_') + '.png';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
-function removeFromGallery(id) {
-  let gallery = JSON.parse(localStorage.getItem('aortax_gallery')||'[]');
-  gallery = gallery.filter(i=>i.id!=id);
-  localStorage.setItem('aortax_gallery', JSON.stringify(gallery));
-  renderGallery();
+  // tomorrow fajr (simple)
+  const tomorrowFajr = timeStrToDate(timings['Fajr']);
+  tomorrowFajr.setDate(tomorrowFajr.getDate()+1);
+  startCountdown(tomorrowFajr, 'Fajr (غداً)');
 }
 
-/* ==== حماية وحيل صغيرة ==== */
-function escapeHtml(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-/* ==== Dark mode toggle بسيط ==== */
-function toggleDark(){
-  document.body.classList.toggle('light-mode');
-  if(document.body.classList.contains('light-mode')){
-    document.body.style.background = 'linear-gradient(180deg,#f6fbff,#dfeeff)';
-    document.body.style.color = '#0a1f3b';
-  } else {
-    document.body.style.background = 'linear-gradient(180deg,#020617,#071124)';
-    document.body.style.color = '#e6eefb';
+function startCountdown(targetDate, name){
+  $('nextName').textContent = name;
+  if(countdownInterval) clearInterval(countdownInterval);
+  function update(){
+    const now = new Date();
+    let diff = targetDate.getTime() - now.getTime();
+    if(diff<=0){ $('nextCountdown').textContent='00:00:00'; return; }
+    const h = Math.floor(diff/3600000); diff%=3600000;
+    const m = Math.floor(diff/60000); diff%=60000;
+    const s = Math.floor(diff/1000);
+    $('nextCountdown').textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   }
+  update(); countdownInterval = setInterval(update,1000);
 }
 
-/* ==== register service worker إذا سمح المتصفح ==== */
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/service-worker.js').catch(e=>console.warn('SW fail',e));
+/* ====== Tasbih (localStorage) ====== */
+const TASB_KEY = 'ibnnaaf_tasbih';
+let tasb = JSON.parse(localStorage.getItem(TASB_KEY)||'{"count":0,"target":99}');
+$('tasbihCount').textContent = tasb.count;
+$('tasbihTarget').value = tasb.target;
+
+function saveTasb(){ localStorage.setItem(TASB_KEY, JSON.stringify(tasb)); }
+$('incBtn').addEventListener('click', ()=>{ tasb.count++; $('tasbihCount').textContent=tasb.count; playClick(); if(tasb.count>=tasb.target) alert('سبحان الله — وصلت الهدف!'); saveTasb(); });
+$('decBtn').addEventListener('click', ()=>{ if(tasb.count>0) tasb.count--; $('tasbihCount').textContent=tasb.count; saveTasb(); });
+$('resetBtn').addEventListener('click', ()=>{ tasb.count=0; $('tasbihCount').textContent=0; saveTasb(); });
+$('tasbihTarget').addEventListener('change', ()=>{ tasb.target = parseInt($('tasbihTarget').value); saveTasb(); });
+
+/* small click/vibrate */
+function playClick(){ if(navigator.vibrate) navigator.vibrate(30); }
+
+/* ====== Lessons (placeholder content) ====== */
+function loadLessons(){
+  const lessons = [
+    {title:'تفسير الفاتحة — مقدمة', type:'audio', url:'https://www.youtube.com/embed/XXXXX'},
+    {title:'أحكام التجويد — الحلقة 1', type:'video', url:'https://www.youtube.com/embed/YYYYY'},
+    {title:'حفظ القرآن — دليل عملي', type:'article', url:'#'}
+  ];
+  const c = lessons.map(ls=>`<div style="margin-bottom:8px;padding:8px;background:rgba(255,255,255,0.01);border-radius:8px"><strong>${ls.title}</strong><div class="small">${ls.type}</div></div>`).join('');
+  $('lessonsList').innerHTML = c;
 }
 
-/* ==== Init ==== */
-renderGallery();
+/* ====== INIT: location -> prayer times, surah list, verse of day ====== */
+async function initApp(){
+  loadVerseOfDay();
+  loadSurahList();
+  loadLessons();
+  // request geolocation for prayer times
+  try{
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(async pos=>{
+        const lat=pos.coords.latitude, lon=pos.coords.longitude;
+        const data = await fetchPrayerTimes(lat, lon, parseInt($('methodSelect').value||2));
+        if(data) renderTimings(data);
+      }, async ()=>{ // fallback to Algiers
+        const r = await fetch(`${ADHAN_BASE}/timingsByCity?city=Algiers&country=Algeria&method=2`);
+        const j = await r.json(); if(j && j.data) renderTimings(j.data);
+      }, {timeout:10000});
+    } else {
+      const r = await fetch(`${ADHAN_BASE}/timingsByCity?city=Algiers&country=Algeria&method=2`);
+      const j = await r.json(); if(j && j.data) renderTimings(j.data);
+    }
+  }catch(e){ console.warn(e); }
+}
+
+/* Event bindings */
+$('loadSurahBtn').addEventListener('click', ()=>{ const v=$('surahSelect').value; if(v) loadSurah(v); else alert('اختر السورة أولاً'); });
+$('openQuranBtn').addEventListener('click', ()=>{ location.href='#quran'; });
+$('playAyahBtn').addEventListener('click', ()=>{ alert('سيتم ربط مشغل التلاوات لاحقاً'); });
+$('reminderBtn').addEventListener('click', ()=>{ alert('سيتم تفعيل التذكير وإشعارات الأذكار عندما تسمح بالتثبيت/إشعارات'); });
+
+/* register service worker for PWA */
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js').catch(e=>console.warn('SW failed',e)); }
+
+/* start */
+initApp();
 
 </script>
 </body>

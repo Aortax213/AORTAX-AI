@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ibnnaaf-cache-v1';
+const CACHE_NAME = 'ibnnaf-cache-v1';
 const ASSETS = [
   '/',
   '/index.html',
